@@ -1,0 +1,130 @@
+   CREATE TABLE computer
+   (	no NUMBER PRIMARY KEY, 
+	ip VARCHAR2(30 BYTE), 
+	purchase_date VARCHAR2(20 BYTE) DEFAULT TO_CHAR(SYSDATE), 
+	port NUMBER,
+    status VARCHAR2(30 BYTE)
+   );
+  
+  CREATE TABLE rating
+   (	no NUMBER PRIMARY KEY, 
+	name VARCHAR2(20 BYTE)
+   );
+   
+   CREATE TABLE member 
+   (	id VARCHAR2(30 BYTE) PRIMARY KEY, 
+	pw VARCHAR2(30 BYTE), 
+	name VARCHAR2(30 BYTE), 
+	email VARCHAR2(30 BYTE), 
+	join_date VARCHAR2(20 BYTE) DEFAULT TO_CHAR(SYSDATE), 
+	rating NUMBER DEFAULT 2,
+   FOREIGN KEY (rating) REFERENCES rating(no)
+   );
+   
+    CREATE TABLE product_type 
+   (	no NUMBER PRIMARY KEY, 
+	type VARCHAR2(30 BYTE)
+   );
+   CREATE TABLE product 
+   (	no NUMBER PRIMARY KEY, 
+	name VARCHAR2(30 BYTE), 
+	purchase_date VARCHAR2(30 BYTE) DEFAULT TO_CHAR(SYSDATE), 
+	price NUMBER, 
+	type NUMBER REFERENCES product_type(no), 
+	stock NUMBER NOT NULL, 
+	imgaddress VARCHAR2(100 BYTE)
+   );
+   CREATE TABLE pc_in_use
+   (	no NUMBER PRIMARY KEY, 
+   id VARCHAR2(30 BYTE) REFERENCES member(id), 
+   c_no NUMBER REFERENCES computer(no),
+	type VARCHAR2(30 BYTE), 
+	u_date VARCHAR2(20 BYTE) DEFAULT TO_CHAR(SYSDATE), 
+	s_time VARCHAR2(20 BYTE) DEFAULT TO_CHAR(SYSDATE,'HH:MI'), 
+	p_time NUMBER, 
+	s_price NUMBER DEFAULT NULL, 
+	status VARCHAR2(20 BYTE) DEFAULT 'USE'
+   );
+   CREATE TABLE orders 
+   (	no NUMBER PRIMARY KEY, 
+   id VARCHAR2(30 BYTE)  REFERENCES member(id), 
+    p_no NUMBER  REFERENCES product(no),
+	quantity NUMBER, 
+	s_date VARCHAR2(20 BYTE) DEFAULT TO_CHAR(SYSDATE)
+   );
+   
+    CREATE OR REPLACE VIEW member_view AS
+    SELECT m.id AS ID,m.name AS NAME,m.email AS EMAIL,r.name AS RATING,m.join_date AS JOIN_DATE
+    FROM member m join rating r on m.rating=r.no;
+    
+    CREATE OR REPLACE VIEW orders_view AS
+    SELECT o.no,o.id,p.name,p.type,o.quantity,(o.quantity*p.price) AS price,o.s_date
+    FROM orders o join (SELECT p.no AS no,p.name AS name ,t.type AS type ,p.price AS price FROM product p JOIN product_type t ON p.type=t.no) p ON o.p_no=p.no;
+    
+    CREATE OR REPLACE VIEW pc_in_use_view AS
+    SELECT c.no,p.id,p.type,p.S_Time,p.p_time,p.s_price,p.status,c.status as c_status 
+    FROM computer c LEFT OUTER JOIN (SELECT * FROM PC_IN_USE WHERE status='USE' or status='WAIT') p ON c.no=p.c_no;
+    
+    CREATE OR REPLACE VIEW pc_used_view AS
+    SELECT no,id,c_no,type,U_date,S_time,p_time,S_price
+    FROM pc_in_use
+    WHERE status='DONE';
+    
+    CREATE OR REPLACE VIEW product_view AS
+    SELECT p.no AS no,p.name AS name,t.type AS type,p.stock AS stock,p.price AS price,p.purchase_date AS purchase_date
+    FROM product p JOIN product_type t ON p.type=t.no;
+    
+    CREATE OR REPLACE VIEW userinfo_view AS
+    SELECT m.id,m.name,m.join_date,sum(p.p_time) p_time, sum(p.s_price) s_price
+    FROM  member m RIGHT outer JOIN  PC_IN_USE p ON p.id=m.id
+    WHERE status='DONE'
+    GROUP by m.id,m.name,m.join_date;
+   
+CREATE SEQUENCE computer_seq;
+CREATE SEQUENCE product_seq;
+CREATE SEQUENCE pc_in_use_seq;
+CREATE SEQUENCE rating_seq; 
+CREATE SEQUENCE order_seq;
+
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'192.168.0.38',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'192.168.0.41',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'192.168.0.42',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'192.168.0.47',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'192.168.0.50',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트1',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트2',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트3',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트4',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트5',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트6',8000);
+INSERT INTO computer (no,ip,port,status)values (computer_seq.NEXTVAL,'테스트7',8000,'고장');
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트8',8000);
+INSERT INTO computer (no,ip,port)values (computer_seq.NEXTVAL,'테스트9',8000);
+INSERT INTO computer (no,ip,port,status)values (computer_seq.NEXTVAL,'테스트10',8000,'고장');
+   
+INSERT INTO rating values (rating_seq.NEXTVAL,'관리자');
+INSERT INTO rating values (rating_seq.NEXTVAL,'실버');
+INSERT INTO rating values (rating_seq.NEXTVAL,'골드');
+INSERT INTO rating values (rating_seq.NEXTVAL,'플래티넘');
+INSERT INTO rating values (rating_seq.NEXTVAL,'다이아몬드');
+INSERT INTO rating values (rating_seq.NEXTVAL,'게스트');
+
+INSERT INTO member (id,pw,name,email,rating)values ('ADMIN','1234','관리자','ADMIN',1);
+INSERT INTO member (id,pw,name,email,rating)values ('GUEST','1234','비회원','GUEST',6);
+
+INSERT INTO product_type values (1,'음료');
+INSERT INTO product_type values (2,'스낵');
+INSERT INTO product_type values (3,'라면');
+
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'김치라면',3000,3,99,'1.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'김치우동',3500,3,99,'2.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'까르보나라라볶이',3500,3,99,'3.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'떡라면',3000,3,100,'4.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'떡만두국',3500,3,100,'5.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'만두라면',3000,3,99,'6.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'매콤떡볶이',3000,3,99,'7.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'베이컨크림떡볶이',3800,3,100,'8.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'병천순대',3000,2,83,'9.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'코카콜라',1000,1,76,'10.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'스프라이트',1000,1,96,'11.jpg');
+INSERT INTO product (NO,NAME,PRICE,TYPE,STOCK,IMGADDRESS) values (product_seq.NEXTVAL,'웰치스',1000,1,97,'12.jpg');

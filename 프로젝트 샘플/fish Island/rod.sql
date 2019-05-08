@@ -1,0 +1,49 @@
+--------------------------------------------------------
+--  ÆÄÀÏÀÌ »ý¼ºµÊ - ¼ö¿äÀÏ-12¿ù-26-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table ROD
+--------------------------------------------------------
+
+  CREATE TABLE "GAME"."ROD" 
+   (	"RNO" NUMBER, 
+	"RNAME" VARCHAR2(50 BYTE), 
+	"PRICE" NUMBER, 
+	"ATT" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+REM INSERTING into GAME.ROD
+SET DEFINE OFF;
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (1,'³°Àº ³¬½Ã´ë',0,30);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (2,'Æò¹üÇÑ ³¬½Ã´ë',3000,35);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (3,'´Ü´ÜÇÑ ³¬½Ã´ë',6000,40);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (4,'³ë¶õ ³¬½Ã´ë',12500,50);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (5,'Çª¸¥»ö ³¬½Ã´ë',22500,60);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (6,'ºû³ª´Â ³¬½Ã´ë',35000,65);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (7,'Çà¿îÀÇ ³¬½Ã´ë',40000,80);
+Insert into GAME.ROD (RNO,RNAME,PRICE,ATT) values (8,'Àü¼³ÀÇ ³¬½Ã´ë',55000,90);
+--------------------------------------------------------
+--  DDL for Index ROD_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GAME"."ROD_PK" ON "GAME"."ROD" ("RNO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table ROD
+--------------------------------------------------------
+
+  ALTER TABLE "GAME"."ROD" MODIFY ("ATT" NOT NULL ENABLE);
+  ALTER TABLE "GAME"."ROD" ADD CONSTRAINT "ROD_PK" PRIMARY KEY ("RNO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "GAME"."ROD" MODIFY ("RNO" NOT NULL ENABLE);
+  ALTER TABLE "GAME"."ROD" MODIFY ("PRICE" NOT NULL ENABLE);
+  ALTER TABLE "GAME"."ROD" MODIFY ("RNAME" NOT NULL ENABLE);

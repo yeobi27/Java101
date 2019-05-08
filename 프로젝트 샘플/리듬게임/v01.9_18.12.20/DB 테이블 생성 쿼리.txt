@@ -1,0 +1,30 @@
+-- player 테이블 생성
+DROP TABLE PLAYER;
+
+CREATE TABLE PLAYER (
+    NO NUMBER PRIMARY KEY, 
+	ID VARCHAR2(20) UNIQUE, 
+	PW VARCHAR2(20), 
+	NICKNAME VARCHAR2(20) UNIQUE
+);
+
+ALTER TABLE PLAYER MODIFY (ID NOT NULL ENABLE);  
+ALTER TABLE PLAYER MODIFY (PW NOT NULL ENABLE);
+ALTER TABLE PLAYER MODIFY (NICKNAME NOT NULL ENABLE);
+
+-- player 시퀀스 생성
+DROP SEQUENCE PLAYER_SQ;
+CREATE SEQUENCE PLAYER_SQ START WITH 1 INCREMENT BY 1;
+
+-- recode 테이블 생성
+drop table recode;
+create table recode(
+    id varchar2(20) not null,
+    titleName varchar2(30) not null,
+    difficulty varchar2(20) not null,
+    score number not null
+);
+
+alter table recode add constraints recode_fk foreign key (id) references player (id);
+
+COMMIT;
