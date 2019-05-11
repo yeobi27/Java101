@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="6B1AE3A4-8275-F20B-8A3D-A51CB6178C29" name="orderlist" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="02DCD6D4-2C74-C418-A391-3B025C65BDE0" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="69561D07-F21B-3668-FBA1-209EF968A599" name="payment" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="02DCD6D4-2C74-C418-A391-3B025C65BDE0" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="C2B1E493-F950-42E8-9A56-DE7C89BE765B" name="product" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="02DCD6D4-2C74-C418-A391-3B025C65BDE0" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="5348E91C-451C-7A80-2CDE-1829428FC4A4" name="stock" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="02DCD6D4-2C74-C418-A391-3B025C65BDE0" propertySourceId="" propertyTargetId=""/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>
