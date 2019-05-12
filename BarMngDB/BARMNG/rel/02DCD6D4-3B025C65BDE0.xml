@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="BARMNG" id="02DCD6D4-2C74-C418-A391-3B025C65BDE0" mainViewID="EBDC0F1E-502C-704C-EFB9-4BC7133CEE4E">
+<createdBy>it</createdBy>
+<createdTime>2019-05-10 09:57:21 UTC</createdTime>
+<ownerDesignName>BARMNG</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>
