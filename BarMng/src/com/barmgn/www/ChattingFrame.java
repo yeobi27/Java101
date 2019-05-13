@@ -23,6 +23,7 @@ public class ChattingFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	MainFrame mainframe;
 
 	/**
 	 * Launch the application.
@@ -31,8 +32,8 @@ public class ChattingFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChattingFrame frame = new ChattingFrame();
-					frame.setVisible(true);
+//					ChattingFrame frame = new ChattingFrame();
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,7 +44,8 @@ public class ChattingFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ChattingFrame() {
+	public ChattingFrame(MainFrame mainframe) {
+		this.mainframe = mainframe;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 360);
 		contentPane = new JPanel();
@@ -76,13 +78,13 @@ public class ChattingFrame extends JFrame {
 		panel_1.add(tabbedPane);
 		
 		JTextArea txtrNoNoNo = new JTextArea();
-		tabbedPane.addTab("¿¸√º", null, txtrNoNoNo, null);
+		tabbedPane.addTab("Ï†ÑÏ≤¥", null, txtrNoNoNo, null);
 		txtrNoNoNo.setTabSize(12);
 		txtrNoNoNo.setText("No.1\r\nNo,2\r\nNo.3");
 		txtrNoNoNo.setName("");
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.RIGHT);
-		tabbedPane.addTab("∞≥¿Œ", null, tabbedPane_1, null);
+		tabbedPane.addTab("Í∞úÏù∏", null, tabbedPane_1, null);
 		
 		textField = new JTextField();
 		textField.setBounds(12, 205, 116, 24);
@@ -98,5 +100,32 @@ public class ChattingFrame extends JFrame {
 		btnBack.setBounds(82, 27, 100, 25);
 		btnBack.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		panel_2.add(btnBack);
+		
+		setVisible(true);
+		ChattingListener l = new ChattingListener(); 
+		btnBack.addActionListener(l);
+	}
+	
+	class ChattingListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String c_cmd = e.getActionCommand();
+			
+			switch(c_cmd)
+			{
+			case "Ïù¥Ï†Ñ":
+				dispose();
+				mainframe.setVisible(true);
+				break;
+			case "Ï†ÑÏ≤¥":
+				break;
+			case "Í∞úÏù∏":
+				break;
+			}
+			
+		}
+		
 	}
 }

@@ -20,10 +20,13 @@ import javax.swing.JTabbedPane;
 import java.awt.Font;
 import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
+import javax.swing.SwingConstants;
 
 public class OrderFrame extends JFrame {
 
 	private JPanel contentPane;
+	CardLayout cards;
+	private OrderFrame orderFrame;
 	MainFrame mainFrame;
 	
 	/**
@@ -55,235 +58,206 @@ public class OrderFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBounds(12, 10, 320, 42);
-		contentPane.add(panel_5);
-		panel_5.setLayout(null);
+		JPanel p_Tab = new JPanel();
+		p_Tab.setBounds(12, 10, 320, 42);
+		contentPane.add(p_Tab);
+		p_Tab.setLayout(null);
 		
 		JButton btnBackFrame = new JButton("\uC774\uC804");
 		btnBackFrame.setBounds(0, 10, 56, 28);
 		btnBackFrame.setPreferredSize(new Dimension(97, 35));
-		panel_5.add(btnBackFrame);
+		p_Tab.add(btnBackFrame);
 		
-		JButton btnNewButton_12 = new JButton("\uC220");
-		btnNewButton_12.setBounds(116, 16, 45, 23);
-		panel_5.add(btnNewButton_12);
+		JButton tp_btnAlcohol = new JButton("\uC220");
+		tp_btnAlcohol.setBounds(116, 16, 45, 23);
+		p_Tab.add(tp_btnAlcohol);
 		
-		JButton button_38 = new JButton("\uC548\uC8FC");
-		button_38.setBounds(164, 16, 56, 23);
-		panel_5.add(button_38);
+		JButton tp_btnSnack = new JButton("\uC548\uC8FC");
+		tp_btnSnack.setBounds(164, 16, 56, 23);
+		p_Tab.add(tp_btnSnack);
 		
-		JButton button_39 = new JButton("\uC74C\uB8CC/\uC2DD\uC0AC");
-		button_39.setBounds(222, 16, 86, 23);
-		panel_5.add(button_39);
+		JButton tp_btnDrinknMeal = new JButton("\uC74C\uB8CC/\uC2DD\uC0AC");
+		tp_btnDrinknMeal.setBounds(222, 16, 86, 23);
+		p_Tab.add(tp_btnDrinknMeal);
 		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBounds(2, 61, 332, 170);
-		panel_10.setPreferredSize(new Dimension(340, 180));
-		contentPane.add(panel_10);
-		panel_10.setLayout(new CardLayout(0, 0));
+		JPanel p_CardLayout = new JPanel();
+		p_CardLayout.setBounds(2, 61, 332, 170);
+		p_CardLayout.setPreferredSize(new Dimension(340, 180));
+		contentPane.add(p_CardLayout);
+		cards = new CardLayout(0, 0);
+		p_CardLayout.setLayout(cards);
 		
-		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(332, 175));
-		panel_10.add(panel, "name_20130474218538");
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
+		JPanel p_OrderList = new JPanel();
+		p_OrderList.setPreferredSize(new Dimension(332, 175));
+		p_CardLayout.add(p_OrderList, "name_20130474218538");
+		p_OrderList.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setPreferredSize(new Dimension(106, 165));
-		panel.add(panel_1);
+		JPanel p_AlcoholList = new JPanel();
+		p_AlcoholList.setLayout(null);
+		p_AlcoholList.setPreferredSize(new Dimension(106, 165));
+		p_OrderList.add(p_AlcoholList);
 		
-		JLabel label_2 = new JLabel("New label");
-		label_2.setBounds(26, 5, 57, 15);
-		panel_1.add(label_2);
+		JLabel lblAlcohol = new JLabel("술");
+		lblAlcohol.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlcohol.setBounds(26, 5, 57, 15);
+		p_AlcoholList.add(lblAlcohol);
 		
-		JButton button = new JButton("New button");
-		button.setBounds(6, 25, 97, 23);
-		panel_1.add(button);
+		JButton btnSoju = new JButton("소주");
+		btnSoju.setBounds(6, 25, 97, 23);
+		p_AlcoholList.add(btnSoju);
 		
-		JButton button_1 = new JButton("New button");
-		button_1.setBounds(6, 53, 97, 23);
-		panel_1.add(button_1);
+		JButton btnTrdAlcohol = new JButton("전통주");
+		btnTrdAlcohol.setBounds(6, 53, 97, 23);
+		p_AlcoholList.add(btnTrdAlcohol);
 		
-		JButton button_2 = new JButton("New button");
-		button_2.setBounds(6, 81, 97, 23);
-		panel_1.add(button_2);
+		JButton btnLiveBeer = new JButton("생맥주");
+		btnLiveBeer.setBounds(6, 81, 97, 23);
+		p_AlcoholList.add(btnLiveBeer);
 		
-		JButton button_3 = new JButton("New button");
-		button_3.setBounds(6, 109, 97, 23);
-		panel_1.add(button_3);
+		JButton btnBottleBeer = new JButton("병맥주");
+		btnBottleBeer.setBounds(6, 109, 97, 23);
+		p_AlcoholList.add(btnBottleBeer);
 		
-		JButton button_4 = new JButton("New button");
-		button_4.setBounds(6, 137, 97, 23);
-		panel_1.add(button_4);
+		JButton btnNonAlcohol = new JButton("무알콜");
+		btnNonAlcohol.setBounds(6, 137, 97, 23);
+		p_AlcoholList.add(btnNonAlcohol);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(null);
-		panel_2.setPreferredSize(new Dimension(106, 165));
-		panel.add(panel_2);
+		JPanel p_SnackList = new JPanel();
+		p_SnackList.setLayout(null);
+		p_SnackList.setPreferredSize(new Dimension(106, 165));
+		p_OrderList.add(p_SnackList);
 		
-		JLabel label_3 = new JLabel("New label");
-		label_3.setBounds(26, 5, 57, 15);
-		panel_2.add(label_3);
+		JLabel lblSnack = new JLabel("안주");
+		lblSnack.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSnack.setBounds(26, 5, 57, 15);
+		p_SnackList.add(lblSnack);
 		
-		JButton button_5 = new JButton("New button");
-		button_5.setBounds(6, 25, 97, 23);
-		panel_2.add(button_5);
+		JButton btnSalad = new JButton("샐러드");
+		btnSalad.setBounds(6, 25, 97, 23);
+		p_SnackList.add(btnSalad);
 		
-		JButton button_6 = new JButton("New button");
-		button_6.setBounds(6, 53, 97, 23);
-		panel_2.add(button_6);
+		JButton btnCheese = new JButton("치즈류");
+		btnCheese.setBounds(6, 53, 97, 23);
+		p_SnackList.add(btnCheese);
 		
-		JButton button_7 = new JButton("New button");
-		button_7.setBounds(6, 81, 97, 23);
-		panel_2.add(button_7);
+		JButton btnBest = new JButton("일품요리류");
+		btnBest.setBounds(6, 81, 97, 23);
+		p_SnackList.add(btnBest);
 		
-		JButton button_9 = new JButton("New button");
-		button_9.setBounds(6, 109, 97, 23);
-		panel_2.add(button_9);
+		JButton btnRoasting = new JButton("볶음류");
+		btnRoasting.setBounds(6, 109, 97, 23);
+		p_SnackList.add(btnRoasting);
 		
-		JButton button_10 = new JButton("New button");
-		button_10.setBounds(6, 137, 97, 23);
-		panel_2.add(button_10);
+		JButton btnSoup = new JButton("탕류");
+		btnSoup.setBounds(6, 137, 97, 23);
+		p_SnackList.add(btnSoup);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setPreferredSize(new Dimension(106, 165));
-		panel.add(panel_7);
+		JPanel p_DrinknMealList = new JPanel();
+		p_DrinknMealList.setPreferredSize(new Dimension(106, 165));
+		p_OrderList.add(p_DrinknMealList);
+		p_DrinknMealList.setLayout(null);
 		
-		JLabel label_4 = new JLabel("New label");
-		panel_7.add(label_4);
+		JLabel lblDrinknMeal = new JLabel("음료/식사");
+		lblDrinknMeal.setBounds(26, 5, 54, 15);
+		p_DrinknMealList.add(lblDrinknMeal);
 		
-		JButton button_11 = new JButton("New button");
-		panel_7.add(button_11);
+		JButton btnDrink = new JButton("음료");
+		btnDrink.setBounds(5, 25, 97, 23);
+		p_DrinknMealList.add(btnDrink);
 		
-		JButton button_13 = new JButton("New button");
-		panel_7.add(button_13);
+		JButton btnSelfMenu = new JButton("셀프메뉴");
+		btnSelfMenu.setBounds(5, 53, 97, 23);
+		p_DrinknMealList.add(btnSelfMenu);
 		
-		JButton button_14 = new JButton("New button");
-		panel_7.add(button_14);
+		JButton btnSubMenu = new JButton("서브메뉴");
+		btnSubMenu.setBounds(5, 81, 97, 23);
+		p_DrinknMealList.add(btnSubMenu);
 		
-		JButton button_15 = new JButton("New button");
-		panel_7.add(button_15);
+		JButton btnAddSari = new JButton("추가사리");
+		btnAddSari.setBounds(5, 109, 97, 23);
+		p_DrinknMealList.add(btnAddSari);
 		
-		JButton button_17 = new JButton("New button");
-		panel_7.add(button_17);
+		JPanel p_inAlcohol = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) p_inAlcohol.getLayout();
+		p_CardLayout.add(p_inAlcohol, "name_20923529610151");
 		
-		JPanel panel_9 = new JPanel();
-		panel_10.add(panel_9, "name_20923529610151");
+		JButton btnBrotherSoju = new JButton("복받은부라더");
+		btnBrotherSoju.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btnBrotherSoju);
 		
-		JButton button_29 = new JButton("\uC220");
-		button_29.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_29);
+		JButton btnSunhariApp = new JButton("순하리(사과)");
+		btnSunhariApp.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btnSunhariApp);
 		
-		JButton button_30 = new JButton("New button");
-		button_30.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_30);
+		JButton btnCharmSoju = new JButton("참이슬");
+		btnCharmSoju.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btnCharmSoju);
 		
-		JButton button_31 = new JButton("New button");
-		button_31.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_31);
+		JButton btnAsFirst = new JButton("처음처럼");
+		btnAsFirst.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btnAsFirst);
 		
-		JButton button_32 = new JButton("New button");
-		button_32.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_32);
+		JButton btmCharmJamong = new JButton("참이슬(자몽)");
+		btmCharmJamong.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btmCharmJamong);
 		
-		JButton button_33 = new JButton("New button");
-		button_33.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_33);
+		JButton btnSunhariBok = new JButton("순하리(복숭아)");
+		btnSunhariBok.setPreferredSize(new Dimension(105, 50));
+		p_inAlcohol.add(btnSunhariBok);
 		
-		JButton button_34 = new JButton("New button");
-		button_34.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_34);
+		JPanel p_inSnack = new JPanel();
+		p_CardLayout.add(p_inSnack, "name_20920245608460");
 		
-		JButton button_35 = new JButton("New button");
-		button_35.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_35);
+		JButton btnSnack = new JButton("매운까르르치킨");
+		btnSnack.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnSnack);
 		
-		JButton button_36 = new JButton("New button");
-		button_36.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_36);
+		JButton btnXo = new JButton("XO떡볶이");
+		btnXo.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnXo);
 		
-		JButton button_37 = new JButton("New button");
-		button_37.setPreferredSize(new Dimension(100, 50));
-		panel_9.add(button_37);
+		JButton btnCrmGangJung = new JButton("크림속매운닭강정");
+		btnCrmGangJung.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnCrmGangJung);
 		
-		JPanel panel_8 = new JPanel();
-		panel_10.add(panel_8, "name_20920245608460");
+		JButton btnBigChiken = new JButton("통큰통닭");
+		btnBigChiken.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnBigChiken);
 		
-		JButton button_20 = new JButton("\uC548\uC8FC");
-		button_20.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_20);
+		JButton btnLol = new JButton("L.O.L");
+		btnLol.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnLol);
 		
-		JButton button_21 = new JButton("New button");
-		button_21.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_21);
+		JButton btnPadak = new JButton("파닭");
+		btnPadak.setPreferredSize(new Dimension(105, 50));
+		p_inSnack.add(btnPadak);
 		
-		JButton button_22 = new JButton("New button");
-		button_22.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_22);
+		JPanel p_inDrinknMeal = new JPanel();
+		p_CardLayout.add(p_inDrinknMeal, "name_20167251879038");
 		
-		JButton button_23 = new JButton("New button");
-		button_23.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_23);
+		JButton btnCola = new JButton("콜라");
+		btnCola.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnCola);
 		
-		JButton button_24 = new JButton("New button");
-		button_24.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_24);
+		JButton btnCider = new JButton("사이다");
+		btnCider.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnCider);
 		
-		JButton button_25 = new JButton("New button");
-		button_25.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_25);
+		JButton btnOrangJuice = new JButton("오렌지주스");
+		btnOrangJuice.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnOrangJuice);
 		
-		JButton button_26 = new JButton("New button");
-		button_26.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_26);
+		JButton btnRedBull = new JButton("레드불");
+		btnRedBull.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnRedBull);
 		
-		JButton button_27 = new JButton("New button");
-		button_27.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_27);
+		JButton btnTonicWater = new JButton("토닉워터");
+		btnTonicWater.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnTonicWater);
 		
-		JButton button_28 = new JButton("New button");
-		button_28.setPreferredSize(new Dimension(100, 50));
-		panel_8.add(button_28);
-		
-		JPanel panel_6 = new JPanel();
-		panel_10.add(panel_6, "name_20167251879038");
-		
-		JButton btnNewButton_3 = new JButton("\uC74C\uB8CC");
-		btnNewButton_3.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("New button");
-		btnNewButton_6.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_6);
-		
-		JButton btnNewButton_7 = new JButton("New button");
-		btnNewButton_7.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_7);
-		
-		JButton btnNewButton_8 = new JButton("New button");
-		btnNewButton_8.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(btnNewButton_8);
-		
-		JButton button_16 = new JButton("New button");
-		button_16.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(button_16);
-		
-		JButton button_18 = new JButton("New button");
-		button_18.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(button_18);
-		
-		JButton button_19 = new JButton("New button");
-		button_19.setPreferredSize(new Dimension(100, 50));
-		panel_6.add(button_19);
+		JButton btnCoolPeace = new JButton("쿨피스");
+		btnCoolPeace.setPreferredSize(new Dimension(105, 50));
+		p_inDrinknMeal.add(btnCoolPeace);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
@@ -314,12 +288,12 @@ public class OrderFrame extends JFrame {
 		panel_3.setPreferredSize(new Dimension(130, 300));
 		contentPane.add(panel_3);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		panel_3.add(lblNewLabel);
+		JLabel lblOrderCart = new JLabel("주문카트담기");
+		panel_3.add(lblOrderCart);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setRows(12);
-		textArea.setColumns(13);
+		textArea.setColumns(16);
 		panel_3.add(textArea);
 		
 		JButton btnNewButton_1 = new JButton("\uC8FC\uBB38");
@@ -339,9 +313,9 @@ public class OrderFrame extends JFrame {
 		btnBackPanel.setBounds(12, 5, 57, 23);
 		panel_11.add(btnBackPanel);
 		
-		JButton btnNewButton_11 = new JButton("\uC8FC\uBB38\uCE74\uD2B8\uB2F4\uAE30");
-		btnNewButton_11.setBounds(115, 5, 105, 23);
-		panel_11.add(btnNewButton_11);
+		JButton btnInputTextArea = new JButton("\uC8FC\uBB38\uCE74\uD2B8\uB2F4\uAE30");
+		btnInputTextArea.setBounds(115, 5, 105, 23);
+		panel_11.add(btnInputTextArea);
 		
 		JButton btnFrontPanel = new JButton(">");
 		btnFrontPanel.setBounds(263, 5, 57, 23);
@@ -351,8 +325,16 @@ public class OrderFrame extends JFrame {
 		
 		OrderListener l = new OrderListener();
 		btnBackFrame.addActionListener(l);
+		tp_btnAlcohol.addActionListener(l);
+		tp_btnSnack.addActionListener(l);
+		tp_btnDrinknMeal.addActionListener(l);
 	}
 	
+	public void changePanel() 
+	{ 
+		cards.next(this.getContentPane()); 
+	}
+
 	class OrderListener implements ActionListener{
 
 		@Override
@@ -363,7 +345,8 @@ public class OrderFrame extends JFrame {
 			switch(o_cmd)
 			{
 			case "이전":
-				setVisible(false);
+//				setVisible(false);
+				dispose();
 				mainFrame.setVisible(true);
 				break;
 			}

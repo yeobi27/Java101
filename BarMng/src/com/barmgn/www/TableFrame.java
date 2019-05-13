@@ -56,7 +56,7 @@ public class TableFrame extends JFrame {
 		contentPane.add(p1);
 		p1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnbefore = new JButton("?† ?´? „?œ¼ë¡?");
+		JButton btnbefore = new JButton("ì´ì „ìœ¼ë¡œ");
 		btnbefore.setMinimumSize(new Dimension(100, 20));
 		btnbefore.setMaximumSize(new Dimension(100, 20));
 		btnbefore.setAlignmentY(0.0f);
@@ -164,11 +164,11 @@ public class TableFrame extends JFrame {
 		contentPane.add(p4);
 		p4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblCall = new JLabel("ë©”ì„¸ì§? ë³´ë‚¼ ?…Œ?´ë¸”ì„ ?ˆ„ë¥´ì„¸?š”");
+		JLabel lblCall = new JLabel("ë©”ì„¸ì§€ë¥¼ ë³´ë‚¼ í…Œì´ë¸”ì„ ëˆ„ë¥´ì„¸ìš”");
 		lblCall.setPreferredSize(new Dimension(320, 30));
 		p4.add(lblCall);
 		
-		JButton btnExit = new JButton("?‹«ê¸?");
+		JButton btnExit = new JButton("ë‹«ê¸°");
 		btnExit.setActionCommand("New Button");
 		p4.add(btnExit);
 		btnExit.setAlignmentY(0.0f);
@@ -178,7 +178,7 @@ public class TableFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();  //?‹«ê¸? 
+				dispose();  //?ï¿½ï¿½ï¿½? 
 				
 			}
 		});

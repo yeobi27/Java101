@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
 		panel.setPreferredSize(new Dimension(300, 34));
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
-		JButton btnCall = new JButton("»£√‚");
+		JButton btnCall = new JButton("Ìò∏Ï∂ú");
 		btnCall.setBounds(349, 10, 100, 25);
 		btnCall.setMargin(new Insets(0, 0, 0, 0));
 		btnCall.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -59,7 +59,7 @@ public class MainFrame extends JFrame {
 		panel.setLayout(null);
 		panel.add(btnCall);
 		
-		JButton btnManuLink = new JButton("∏ﬁ¥∫∏µ≈©");
+		JButton btnManuLink = new JButton("Î©îÎâ¥ÎßÅÌÅ¨");
 		btnManuLink.setBounds(12, 10, 100, 25);
 		btnManuLink.setAlignmentY(0.0f);
 		btnManuLink.setMargin(new Insets(0, 0, 0, 0));
@@ -83,7 +83,7 @@ public class MainFrame extends JFrame {
 		JLabel lblDesc = new JLabel("DESC_LB");
 		panel_1.add(lblDesc);
 		
-		JButton btnWating = new JButton("¥Î±‚ªÛ»≤");
+		JButton btnWating = new JButton("Í≤åÏûÑÎåÄÍ∏∞");
 		btnWating.setPreferredSize(new Dimension(100, 25));
 		panel_1.add(btnWating);
 		
@@ -91,17 +91,17 @@ public class MainFrame extends JFrame {
 		getContentPane().add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnOrder = new JButton("¡÷πÆ");
+		JButton btnOrder = new JButton("Ï£ºÎ¨∏");
 		btnOrder.setPreferredSize(new Dimension(60, 200));
 		panel_2.add(btnOrder);
 		
 
-		JButton btnGame = new JButton("∞‘¿”");
+		JButton btnGame = new JButton("Í≤åÏûÑ");
 		btnGame.setPreferredSize(new Dimension(60, 200));
 		panel_2.add(btnGame);
 		
 
-		JButton btnChatting = new JButton("√§∆√");
+		JButton btnChatting = new JButton("Ï±ÑÌåÖ");
 		btnChatting.setPreferredSize(new Dimension(60, 200));
 		panel_2.add(btnChatting);
 		
@@ -114,7 +114,7 @@ public class MainFrame extends JFrame {
 		panel_3.add(btnTableService);
 		
 
-		JButton btnBill = new JButton("∞ËªÍº≠");
+		JButton btnBill = new JButton("Í≥ÑÏÇ∞ÏÑú");
 		btnBill.setPreferredSize(new Dimension(100, 25));
 		btnBill.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		panel_3.add(btnBill);
@@ -153,36 +153,22 @@ public class MainFrame extends JFrame {
 			
 			switch(m_cmd)
 			{
-			case "¡÷πÆ":
+			case "Ï£ºÎ¨∏":
 				setVisible(false);
 				new OrderFrame(frame);
 				break;
-			case "∞‘¿”":
+			case "Í≤åÏûÑ":
 				setVisible(false);
-				new GameMenuFrame();
+				new GameMenuFrame(frame);
 				break;
-			case "√§∆√":
+			case "Ï±ÑÌåÖ":
 				setVisible(false);
-				new ChattingFrame();
+				new ChattingFrame(frame);
 				break;
 			default:
 				break;
 			}
-			
-			
-			
-			
-			
-			
 		}
 		
 	}	
-		
-	
-	
-	
-	
-	
-	
-	
 }
