@@ -1,18 +1,21 @@
 package com.barmgn.www;
 
+import java.sql.Date;
+
 public class Order {
 	private int ordnum, tno, pno, price, tot_sales, quantity;
-	private String c_date, pname;
-	public Order(int ordnum, int tno, int pno, int price, int tot_sales, int quantity, String c_date, String pname) {
+	private String pname;
+	private Date c_date;
+	public Order(int ordnum, int tno, int pno, String pname,int price, int tot_sales, int quantity, Date c_date) {
 		super();
 		this.ordnum = ordnum;
 		this.tno = tno;
 		this.pno = pno;
+		this.pname = pname;
 		this.price = price;
 		this.tot_sales = tot_sales;
 		this.quantity = quantity;
 		this.c_date = c_date;
-		this.pname = pname;
 	}
 	public int getOrdnum() {
 		return ordnum;
@@ -50,10 +53,10 @@ public class Order {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getC_date() {
+	public Date getC_date() {
 		return c_date;
 	}
-	public void setC_date(String c_date) {
+	public void setC_date(Date c_date) {
 		this.c_date = c_date;
 	}
 	public String getPname() {
@@ -64,8 +67,8 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return ordnum + " " + tno + " " + pno + " " + price + " "
-				+ tot_sales + " " + quantity + " " + c_date + " " + pname;
+		return ordnum + " " + c_date + " " + tno + " " + pno + " " + pname + " "
+				+ price + " " + quantity + " " + tot_sales;
 	}
 	
 }

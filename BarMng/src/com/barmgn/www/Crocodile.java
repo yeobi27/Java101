@@ -97,7 +97,6 @@ public class Crocodile extends JFrame {
          // when click buttons
          btn[i].addActionListener(new MyActionListener());
       }
-      
    
       ImagePanel pn = new ImagePanel(myImage);   
       contentPane.add(pn);

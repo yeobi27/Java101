@@ -1,153 +1,196 @@
 package com.barmgn.www;
-import java.awt.EventQueue;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
-import java.awt.Point;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.Insets;
+import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame {
 
-   /**
-    * Launch the application.
-    */
-   public static void main(String[] args) {
-      EventQueue.invokeLater(new Runnable() {
-         public void run() {
-            try {
-               MainFrame frame = new MainFrame();
-               frame.setVisible(true);
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
-         }
-      });
-   }
-   /**
-    * Create the frame.
-    */
-   public MainFrame() {
-      setBounds(new Rectangle(5, 5, 0, 0));
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setBounds(100, 100, 480, 360);
-      getContentPane().setLayout(new BorderLayout(5,5));
-      
-      JPanel panel = new JPanel();
-      panel.setPreferredSize(new Dimension(300, 34));
-      getContentPane().add(panel, BorderLayout.NORTH);
-      
-      JButton btnCall = new JButton("호출");
-      btnCall.setBounds(349, 10, 100, 25);
-      btnCall.setMargin(new Insets(0, 0, 0, 0));
-      btnCall.setAlignmentX(Component.RIGHT_ALIGNMENT);
-      btnCall.setPreferredSize(new Dimension(100, 25));
-      btnCall.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         }
-      });
-      panel.setLayout(null);
-      panel.add(btnCall);
-      
-      JButton btnManuLink = new JButton("메뉴링크");
-      btnManuLink.setBounds(12, 10, 100, 25);
-      btnManuLink.setAlignmentY(0.0f);
-      btnManuLink.setMargin(new Insets(0, 0, 0, 0));
-      btnManuLink.setHorizontalTextPosition(SwingConstants.CENTER);
-      btnManuLink.setPreferredSize(new Dimension(100, 25));
-      btnManuLink.setVerticalAlignment(SwingConstants.BOTTOM);
-      panel.add(btnManuLink);
-      btnManuLink.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent arg0) {
-         }
-      });
-      
-      JPanel panel_1 = new JPanel();
-      panel_1.setPreferredSize(new Dimension(125, 360));
-      getContentPane().add(panel_1, BorderLayout.WEST);
-      panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-      
-      JLabel lblManuImage = new JLabel("\uBA54\uB274\uC774\uBBF8\uC9C0");
-      panel_1.add(lblManuImage);
-      
-      JLabel lblDesc = new JLabel("DESC_LB");
-      panel_1.add(lblDesc);
-      
-      JButton btnWating = new JButton("게임대기");
-      btnWating.setPreferredSize(new Dimension(100, 25));
-      panel_1.add(btnWating);
-      
-      JPanel panel_2 = new JPanel();
-      getContentPane().add(panel_2, BorderLayout.CENTER);
-      panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-      
-      JButton btnOrder = new JButton("주문");
-      btnOrder.setPreferredSize(new Dimension(60, 200));
-      panel_2.add(btnOrder);
-      
+	private JPanel contentPane;
+	
+	// Image Load
+	// background
+	ImageIcon mainbg_img = new ImageIcon("images/mainbg_img.jpg");
+	// button
+	ImageIcon games_img = new ImageIcon("images/games_img.png");
+	ImageIcon order_img = new ImageIcon("images/order_img.png");
+	ImageIcon talking_img = new ImageIcon("images/talking_img.png");
+	ImageIcon bell_img = new ImageIcon("images/bell_img.png");
+	ImageIcon adbtn_img = new ImageIcon("images/adbtn_img.png");
+	ImageIcon menulink = new ImageIcon("images/menulink.png");
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame frame = new MainFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-      JButton btnGame = new JButton("게임");
-      btnGame.setPreferredSize(new Dimension(60, 200));
-      panel_2.add(btnGame);
-      
+	/**
+	 * Create the frame.
+	 */
+	public MainFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setUndecorated(true);
+		setBackground(new Color(0, 0, 0, 0));
+		setLocationRelativeTo(null);
+		setBounds(100, 100, 800, 600);
+		contentPane = new JPanel() {
+	   	   	public void paintComponent(Graphics g) {
+	   	      super.paintComponents(g); 
+	   	      System.out.println("왜안나와");
+	   	      setOpaque(false);
+	   	      g.drawImage(mainbg_img.getImage(), 0, 0, this); // toy location
+//	   	      g.drawImage(games_img.getImage(), 334, 10, this); // toy location
+//	   	      g.drawImage(order_img.getImage(), 12, 10, this); // toy location
+//	   	      g.drawImage(talking_img.getImage(), 12, 10, this); // toy location
+//	   	      g.drawImage(bell_img.getImage(), 12, 10, this); // toy location
+	   	   }
+		};
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel p_North = new JPanel();
+		p_North.setBackground(new Color(255, 0, 0, 0)); 
 
-      JButton btnChatting = new JButton("채팅");
-      btnChatting.setPreferredSize(new Dimension(60, 200));
-      panel_2.add(btnChatting);
-      
-      JPanel panel_3 = new JPanel();
-      panel_3.setPreferredSize(new Dimension(125, 360));
-      getContentPane().add(panel_3, BorderLayout.EAST);
-      
-      JButton btnTableService = new JButton("\uD14C\uC774\uBE14\uC11C\uBE44\uC2A4");
-      btnTableService.setPreferredSize(new Dimension(100, 25));
-      panel_3.add(btnTableService);
-      
-
-      JButton btnBill = new JButton("계산서");
-      btnBill.setPreferredSize(new Dimension(100, 25));
-      btnBill.setAlignmentX(Component.RIGHT_ALIGNMENT);
-      panel_3.add(btnBill);
-      
-      JPanel panel_4 = new JPanel();
-      getContentPane().add(panel_4, BorderLayout.SOUTH);
-      panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-      
-      JButton button = new JButton("\uAD11\uACE0&\uC774\uBCA4\uD2B8");
-      button.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         }
-      });
-      button.setPreferredSize(new Dimension(100, 25));
-      panel_4.add(button);
-      button.setSize(new Dimension(0,200));
-      
-      MainListener l = new MainListener(this);
-      btnOrder.addActionListener(l);
-      btnGame.addActionListener(l);
-      btnChatting.addActionListener(l);
-}   
+		p_North.setBounds(5, 5, 774, 97);
+		p_North.setPreferredSize(new Dimension(300, 34));
+		contentPane.add(p_North);
+		p_North.setLayout(null);
+		
+		JButton btnCall = new JButton("호출", bell_img);
+		// Border remove
+		btnCall.setBorderPainted(false);
+		// don't do Text to fill 
+		btnCall.setContentAreaFilled(false);
+		// focus border x
+		btnCall.setFocusPainted(false);
+		// 투명
+		btnCall.setOpaque(false);
+		
+		btnCall.setBounds(666, 0, 85, 92);
+		btnCall.setPreferredSize(new Dimension(85, 92));
+		btnCall.setMargin(new Insets(0, 0, 0, 0));
+		btnCall.setAlignmentX(1.0f);
+		p_North.add(btnCall);
+		
+		JButton btnManuLink = new JButton("메뉴링크", menulink);
+		btnManuLink.setFocusPainted(false);
+		btnManuLink.setContentAreaFilled(false);
+		btnManuLink.setBorderPainted(false);
+		btnManuLink.setBounds(12, 29, 140, 53);
+		btnManuLink.setPreferredSize(new Dimension(100, 25));
+		btnManuLink.setMargin(new Insets(0, 0, 0, 0));
+		btnManuLink.setAlignmentY(0.0f);
+		p_North.add(btnManuLink);
+		
+		JPanel p_West = new JPanel();
+		p_North.setBackground(new Color(255,0,0,0));
+		p_West.setBounds(5, 104, 220, 390);
+		p_West.setPreferredSize(new Dimension(220, 300));
+		contentPane.add(p_West);
+		p_West.setLayout(null);
+		
+		JLabel lblManuImage = new JLabel("메뉴이미지");
+		lblManuImage.setBounds(31, 10, 160, 15);
+		p_West.add(lblManuImage);
+		
+		JLabel lblDESC = new JLabel("공사중..");
+		lblDESC.setBounds(31, 166, 160, 15);
+		p_West.add(lblDESC);
+		
+		JButton btnWating = new JButton("게임대기");
+		btnWating.setBorderPainted(false);
+		btnWating.setContentAreaFilled(false);
+		btnWating.setFocusPainted(false);
+		btnWating.setBounds(31, 191, 160, 160);
+		btnWating.setPreferredSize(new Dimension(100, 25));
+		p_West.add(btnWating);
+		
+		JPanel p_Center = new JPanel();
+		p_Center.setBackground(new Color(255,0,0,0));
+		p_Center.setBounds(225, 104, 544, 390);
+		contentPane.add(p_Center);
+		
+		JButton btnOrder = new JButton("주문", order_img);
+		btnOrder.setFocusPainted(false);
+		btnOrder.setContentAreaFilled(false);
+		btnOrder.setBorderPainted(false);
+		btnOrder.setPreferredSize(new Dimension(170, 380));
+		p_Center.add(btnOrder);
+		
+		JButton btnGame = new JButton("게임", games_img);
+		btnGame.setContentAreaFilled(false);
+		btnGame.setBorderPainted(false);
+		btnGame.setFocusPainted(false);
+		btnGame.setPreferredSize(new Dimension(170, 380));
+		p_Center.add(btnGame);
+		
+		JButton btnChatting = new JButton("채팅", talking_img);
+		btnChatting.setFocusPainted(false);
+		btnChatting.setContentAreaFilled(false);
+		btnChatting.setBorderPainted(false);
+		btnChatting.setPreferredSize(new Dimension(170, 380));
+		p_Center.add(btnChatting);
+		
+		JPanel p_South = new JPanel();
+		p_South.setBackground(new Color(255,0,0,0));
+		p_South.setBounds(5, 494, 774, 63);
+		FlowLayout fl_p_South = (FlowLayout) p_South.getLayout();
+		fl_p_South.setAlignment(FlowLayout.RIGHT);
+		contentPane.add(p_South);
+		
+		JButton btnEvent = new JButton("광고&이벤트",adbtn_img );
+		btnEvent.setContentAreaFilled(false);
+		btnEvent.setBorderPainted(false);
+		btnEvent.setFocusPainted(false);
+		btnEvent.setSize(new Dimension(0, 200));
+		btnEvent.setPreferredSize(new Dimension(140, 53));
+		p_South.add(btnEvent);
+		
+		MainListener l = new MainListener(this);
+		btnOrder.addActionListener(l);
+		btnGame.addActionListener(l);
+		btnChatting.addActionListener(l);
+	}
+	
    class MainListener implements ActionListener{
 
-      MainFrame frame;
-      MainListener(MainFrame frame)
-      {
-         this.frame = frame;
-      }
-      
-      @Override
-      public void actionPerformed(ActionEvent arg0) {
-         // TODO Auto-generated method stub
+	      MainFrame frame;
+	      MainListener(MainFrame frame)
+	      {
+	         this.frame = frame;
+	      }
+	      
+	      @Override
+	      public void actionPerformed(ActionEvent arg0) {
+	         // TODO Auto-generated method stub
          
          String m_cmd = arg0.getActionCommand();
          
@@ -171,5 +214,5 @@ public class MainFrame extends JFrame {
          }
       }
       
-   }   
+}  
 }

@@ -1,10 +1,13 @@
 package com.barmgn.www;
 
+import java.sql.Blob;
+
 public class Product {
    private int pno,  price;
-   private String pname, category, detail, image;
+   private String pname, category, detail;
+   private Blob image;
    
-   public Product(int pno, int price, String pname, String category, String detail, String image) {
+   public Product(int pno, String pname, int price, String category, String detail, Blob image) {
       super();
       this.pno = pno;
       this.price = price;
@@ -58,18 +61,17 @@ public class Product {
       this.detail = detail;
    }
 
-   public String getImage() {
+   public Blob getImage() {
       return image;
    }
 
-   public void setImage(String image) {
+   public void setImage(Blob image) {
       this.image = image;
    }
 
    @Override
    public String toString() {
-      return pno + " " + price + " " + pname + " " + category + " "
-            + detail + " " + image;
+      return pname + " " + price;
    }
    
 
